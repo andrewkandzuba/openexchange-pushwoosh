@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "description": "PushWoosh get message statistics",
+  "type": "object",
+  "id": "messages",
+  "additionalProperties": false,
+  "generate-builders": true,
+  "properties": {
+    "auth": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
