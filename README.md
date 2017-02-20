@@ -70,4 +70,13 @@ Please note if you run service or integration tests behind HTTP/HTTPS proxy make
 |javax.net.ssl.trustStore| |A path to local keystore with required proxy certificates|
 |javax.net.ssl.trustStorePassword| |A local keystore password|
 
+## Bootstrap with Docker
 
+- Install **docker** and **docker-compose**
+- Build the project using docker profile: `$mvn clean install -P docker`
+- Navigate to the root of the project directory
+- Copy `docker-compose.yml` to some local directory
+- In the same directory create `.evn` file
+- Add `JAVA_OPTS=` string into `.evn` with appropriated list of service bootstrap properties
+- Run it with `$docker-compose up -d`
+- By default service should appear at your $DOCKER_HOST on port 8115

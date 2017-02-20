@@ -1,0 +1,30 @@
+version: '2'
+services:
+  pushwoosh:
+    image: openexchange/openexchange-pushwoosh:latest
+    network_mode: "host"
+    ports:
+      - "8115:8115"
+      - "9015:9015"
+    environment:
+      JAVA_OPTS: |
+        -server
+        -ea
+        -Xms64m
+        -Xmx128m
+        -XX:MaxMetaspaceSize=64m
+        -Xmn16m -XX:SurvivorRatio=8
+        -XX:TargetSurvivorRatio=50
+        -XX:+UseConcMarkSweepGC
+        -XX:GCTimeRatio=19
+        -XX:+CMSParallelRemarkEnabled
+        -Dserver.tomcat.max-threads=200
+        -Dserver.port=8115
+        -Dcom.sun.management.jmxremote.rmi.port=9015
+        -Dcom.sun.management.jmxremote=true
+        -Dcom.sun.management.jmxremote.port=9015
+        -Dcom.sun.management.jmxremote.ssl=false
+        -Dcom.sun.management.jmxremote.authenticate=false
+        -Dcom.sun.management.jmxremote.local.only=false
+        ${JAVA_OPTS}
+    restart: always
